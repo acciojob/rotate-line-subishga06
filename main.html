@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotating Line</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Line</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+    }
+
+    #line {
+      width: 200px;
+      height: 2px;
+      background-color: #000000;
+      position: absolute; /* Must be absolute */
+      top: 50%;
+      left: 50%;
+      transform-origin: center center;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  </style>
 </head>
 <body>
-    <div id="line"></div>
-    <script src="script.js"></script>
+  <div id="line"></div>
+
+  <script>
+    // Select the line element
+    const line = document.getElementById('line');
+
+    // Initialize rotation angle
+    let angle = 0;
+
+    // Function to rotate the line
+    function rotateLine() {
+      angle += 2; // Increase by 2 degrees
+      line.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+    }
+
+    // Rotate every 20 milliseconds
+    setInterval(rotateLine, 20);
+  </script>
 </body>
 </html>
